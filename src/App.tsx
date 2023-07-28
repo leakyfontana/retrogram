@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ProfileHeader from "./components/ProfileHeader";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="bg-[#c9cccf] h-screen flex flex-col items-center justify-between max-w-lg mx-auto rounded-md">
+      <header className="bg-[#305f87] w-full flex flex-row justify-center h-16 items-center rounded-t-md">
+        <h1 className="text-3xl text-white">RETROGRAM</h1>
       </header>
+      <div className="feed w-full px-3">
+        <ProfileHeader />
+      </div>
+      <footer className="bg-[#41474c] w-full flex flex-row justify-center h-16 items-center rounded-b-md text-white">I am the footer</footer>
     </div>
   );
 }
