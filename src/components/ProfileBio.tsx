@@ -8,8 +8,8 @@ interface Props {
 const ProfileBio: FC<Props> = ({ name, bio}) => {
   return (
     <div className="w-full border-t-2 h-fit-content">
-      <h3 className="m-1 font-bold">{name}</h3>
-      <p className="m-1">{bio}</p>
+      <h3 className="mx-2 mt-2 font-bold">{name}</h3>
+      <p className="mx-2 mb-2">{bio}</p>
     </div>
   );
 };

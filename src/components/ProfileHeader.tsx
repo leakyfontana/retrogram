@@ -6,11 +6,11 @@ import ProfileEditButton from "./ProfileEditButton";
 
 const ProfileHeader: FC = () => {
   return (
-    <div className="bg-[#eeeeee] flex flex-col w-full h-36 rounded-md shadow-md border-[#e9e9e9]">
-      <div className="flex flex-row w-full h-2/3">
+    <div className="bg-[#eeeeee] flex flex-col w-full h-fit rounded-md drop-shadow-md border-[#e9e9e9]">
+      <div className="flex flex-row w-full h-fit">
         <ProfileImage />
         <div className="flex flex-col w-full">
-          <div className="flex flex-row w-full h-7/12">
+          <div className="flex flex-row w-full h-1/2">
             <ProfileStat name={'photos'} count={0} />
             <ProfileStat name={'following'} count={0} />
             <ProfileStat name={'followers'} count={0} />
