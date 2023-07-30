@@ -1,45 +1,36 @@
 import { FC } from "react";
 import NavButtonEnum from "../helpers/enums/NavButtonEnum";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { PiListBold } from "react-icons/pi"
-import ReactDOM from "react-dom";
-import { IconType } from "react-icons";
+import { PiListFill } from "react-icons/pi"
 
 interface Props {
+  selectedButton: number;
+  setSelectedButton: React.Dispatch<React.SetStateAction<number>>;
   buttonType: NavButtonEnum;
 }
 
-const NavButton: FC<Props> = ({ buttonType }) => {
+const NavButton: FC<Props> = ({ selectedButton, setSelectedButton, buttonType }) => {
 
   const getButtonIcon = () => {
     if (buttonType === NavButtonEnum.Grid) {
-      return ( <BsFillGrid3X3GapFill size={30}>
-                  <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#000000" />
-              <stop offset="100%" stopColor="#ffffff" />
-            </linearGradient>
-          </defs>
-          <path fill="url(#gradient)" d={getSVGPath(BsFillGrid3X3GapFill)} />
-      </BsFillGrid3X3GapFill>)
+      return <BsFillGrid3X3GapFill size={30} />
     }
-
-    return <PiListBold size={40} />
+    return <PiListFill size={38} />
   }
 
-    // This function is used to extract the SVG path from the icon component
-    const getSVGPath = (IconComponent: IconType): string => {
-      const tempElement = document.createElement("div");
-      ReactDOM.render(<IconComponent />, tempElement);
-      const svgElement = tempElement.querySelector("svg");
-      return svgElement?.getAttribute("d") || "";
-    };
+  const isSelected = buttonType === selectedButton;
 
+  const handleClick = () => {
+    setSelectedButton(buttonType);
+  }
 
   return (
-    <button className="w-1/2 flex flex-col items-center justify-center">
-      {getButtonIcon()}
-    </button>
+      <button className="w-1/2 flex flex-col items-center justify-center" onClick={handleClick}>
+        {getButtonIcon()}
+        {isSelected && (
+          <span className="absolute w-0 h-0 text-[0] leading-[0] float-left border-t-[15px] border-t-[#eeeeee] border-x-[15px] border-x-transparent border-solid bottom-0 translate-y-3"></span>
+        )}
+      </button>
   )
 };
 
