@@ -9,6 +9,9 @@ module.exports = {
         'billabong': ['Billabong']
       },
     },
+    scale: {
+      '-100': '-1',
+    }
   },
   variants: {
     extend: {
