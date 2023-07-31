@@ -10,8 +10,8 @@ function App() {
   const [selectedButton, setSelectedButton] = useState<number>(NavButtonEnum.Grid)
 
   return (
-    <div className="bg-[#c9cccf] h-screen flex flex-col items-center justify-between max-w-lg mx-auto rounded-md">
-      <header className="bg-gradient-to-b from-[#5A88AF] to-[#214E72] w-full flex flex-row justify-center py-2 items-center rounded-t-md">
+    <div className="bg-[#c9cccf] h-screen flex flex-col items-center justify-between max-w-lg mx-auto">
+      <header className="bg-gradient-to-b from-[#5A88AF] to-[#214E72] w-full flex flex-row justify-center py-2 items-center">
         <h1 className="text-4xl text-white font-billabong">Retrogram</h1>
       </header>
       <div className="w-full px-3 flex flex-col h-full py-3 overflow-y-scroll">
