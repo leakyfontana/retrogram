@@ -1,8 +1,15 @@
 import { FC } from "react";
 
-const PostGridImage: FC = () => {
+interface Props {
+  id: string;
+  scrollToPost: (postId: string) => void;
+}
+
+const PostGridImage: FC<Props> = ({ id, scrollToPost }) => {
+
+
   return (
-    <a href="https://example.com" className="cursor-pointer relative block">
+    <button type="button" onClick={() => scrollToPost(id)} className="cursor-pointer relative block">
       <figure className="m-0 drop-shadow-md p-[2px] bg-[#eeeeee]">
         <img className="w-full align-top" src="assets/images/profile_picture.jpg" alt="" />
       </figure>
@@ -12,7 +19,7 @@ const PostGridImage: FC = () => {
           <span className="w-20 font-[bold] text-center inline-block m-[5px]">10</span>
         </p>
       </span> */}
-    </a>
+    </button>
   )
 };
 

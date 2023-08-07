@@ -1,10 +1,15 @@
+import { FC } from 'react';
 import { FaComment } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { PiClockFill } from 'react-icons/pi';
 
-const PostListImage = () => {
+interface Props {
+  id: string;
+};
+
+const PostListImage: FC<Props> = ({ id }) => {
   return (
-    <figure className="m-0 drop-shadow-md bg-[#eeeeee] p-2 rounded-lg flex flex-col">
+    <figure id={id} className="m-0 drop-shadow-md bg-[#eeeeee] p-2 rounded-lg flex flex-col">
       <div className='pb-2 flex flex-row items-center text-sm justify-between pr-1'>
         <div className='flex flex-row items-center gap-[1px] text-[#5E81C2]'>
           <MdLocationPin size={16} />
