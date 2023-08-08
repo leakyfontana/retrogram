@@ -1,4 +1,4 @@
-const timeSinceTimestamp = (timestamp: number): string => {
+const parseTimestamp = (timestamp: number): string => {
     const now = Math.floor(Date.now() / 1000);
     const diff = now - timestamp;
 
@@ -25,4 +25,4 @@ const timeSinceTimestamp = (timestamp: number): string => {
     return `${Math.floor(diff / 31536000)}y`;
 }
 
-export default timeSinceTimestamp;
+export default parseTimestamp;

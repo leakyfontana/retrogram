@@ -3,7 +3,7 @@ import { FaComment } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { PiClockFill } from 'react-icons/pi';
 import { Post } from '../helpers/types';
-import timeSinceTimestamp from '../helpers/functions/timeSinceTimestamp';
+import parseTimestamp from '../helpers/functions/parseTimestamp';
 
 interface Props {
   post: Post;
@@ -19,7 +19,7 @@ const PostListImage: FC<Props> = ({ post }) => {
         </div>
         <div className='flex flex-row items-center gap-[2px] text-[#c9cccf]'>
           <PiClockFill className='transform -scale-x-100' size={16} />
-          <p>{timeSinceTimestamp(post.date_posted)}</p>
+          <p>{parseTimestamp(post.date_posted)}</p>
         </div>
       </div>
       <img className="w-full align-top" src={post.path} alt="" />
