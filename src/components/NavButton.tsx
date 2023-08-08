@@ -25,7 +25,7 @@ const NavButton: FC<Props> = ({ selectedButton, setSelectedButton, buttonType })
   }
 
   return (
-      <button className="w-1/2 flex flex-col items-center justify-center" onClick={handleClick}>
+      <button className="relative flex flex-col items-center justify-center w-1/2" onClick={handleClick}>
         {getButtonIcon()}
         {isSelected && (
           <span className="absolute w-0 h-0 text-[0] leading-[0] float-left border-t-[15px] border-t-[#eeeeee] border-x-[15px] border-x-transparent border-solid bottom-0 translate-y-3"></span>
