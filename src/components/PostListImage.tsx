@@ -26,7 +26,7 @@ const PostListImage: FC<Props> = ({ post }) => {
       {post.caption && 
         <div className="flex items-center gap-2 pt-2 text-sm flex-nowrap">
           <FaComment className="flex-shrink-0 transform -scale-x-100" color='#c9cccf' size={14} />
-          <p className="text-[#214E72] font-semibold">Xander</p>
+          <p className="text-[#214E72] font-semibold">leakyfontana</p>
           <p className='flex-grow whitespace-normal'>{post.caption}</p>
         </div>
       }
