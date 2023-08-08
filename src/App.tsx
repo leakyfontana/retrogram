@@ -37,7 +37,7 @@ function App() {
         <h1 className="text-4xl text-white font-billabong">Retrogram</h1>
       </header>
       <div className="w-full px-3 flex flex-col h-full py-3 overflow-y-scroll" id="post-list">
-        <ProfileHeader />
+        <ProfileHeader postCount={posts.length} />
         <NavBar selectedButton={selectedButton} setSelectedButton={setSelectedButton} />
         {selectedButton === NavButtonEnum.Grid ? <PostGrid posts={sortedPosts} setSelectedButton={setSelectedButton} scrollToPost={scrollToPost} /> : <PostList posts={sortedPosts} />}
       </div>
