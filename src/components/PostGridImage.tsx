@@ -1,17 +1,18 @@
 import { FC } from "react";
+import { Post } from "../helpers/types";
 
 interface Props {
-  id: string;
+  post: Post;
   scrollToPost: (postId: string) => void;
 }
 
-const PostGridImage: FC<Props> = ({ id, scrollToPost }) => {
+const PostGridImage: FC<Props> = ({ post, scrollToPost }) => {
 
 
   return (
-    <button type="button" onClick={() => scrollToPost(id)} className="cursor-pointer relative block">
+    <button type="button" onClick={() => scrollToPost(post.id)} className="cursor-pointer relative block">
       <figure className="m-0 drop-shadow-md p-[2px] bg-[#eeeeee]">
-        <img className="w-full align-top" src="assets/images/profile_picture.jpg" alt="" />
+        <img className="w-full align-top" src={post.path} alt="" />
       </figure>
       {/* <span className="absolute hidden group-hover:flex items-center justify-center text-[white] text-center inset-0 bg-[#989899] z-10">
         <p>

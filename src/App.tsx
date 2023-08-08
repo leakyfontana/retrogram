@@ -5,7 +5,8 @@ import PostGrid from "./components/PostGrid";
 import ProfileHeader from "./components/ProfileHeader";
 import NavButtonEnum from "./helpers/enums/NavButtonEnum";
 import PostList from "./components/PostList";
-import scrollTo from "./helpers/functions/scrollTo"
+import scrollTo from "./helpers/functions/scrollTo";
+import posts from "./posts.json";
 
 function App() {
   const [selectedButton, setSelectedButton] = useState<number>(NavButtonEnum.Grid);
@@ -26,7 +27,9 @@ function App() {
       scrollTo(postList, post.offsetTop - 100, 600);
       setListScrollId(null);
     }
-  }, [listScrollId])
+  }, [listScrollId]);
+
+  const sortedPosts = posts.sort((x, y) => {return y.date_posted - x.date_posted});
 
   return (
     <div className="bg-[#c9cccf] h-screen flex flex-col items-center justify-between max-w-lg mx-auto">
@@ -36,7 +39,7 @@ function App() {
       <div className="w-full px-3 flex flex-col h-full py-3 overflow-y-scroll" id="post-list">
         <ProfileHeader />
         <NavBar selectedButton={selectedButton} setSelectedButton={setSelectedButton} />
-        {selectedButton === NavButtonEnum.Grid ? <PostGrid setSelectedButton={setSelectedButton} scrollToPost={scrollToPost} /> : <PostList />}
+        {selectedButton === NavButtonEnum.Grid ? <PostGrid posts={sortedPosts} setSelectedButton={setSelectedButton} scrollToPost={scrollToPost} /> : <PostList posts={sortedPosts} />}
       </div>
       {/* <footer className="bg-gradient-to-b from-[#5A5D5B] to-[#4A4B4A] w-full flex flex-row justify-center h-16 items-center rounded-b-md text-white">I am the footer</footer> */}
     </div>

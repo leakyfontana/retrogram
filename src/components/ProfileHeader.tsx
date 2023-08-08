@@ -18,7 +18,7 @@ const ProfileHeader: FC = () => {
           <ProfileEditButton />
         </div>
       </div>
-      <ProfileBio name={'Xander'} bio={'Heres to the crazy ones...'} />
+      <ProfileBio name={'Xander'} bio={'stumbling never falling'} />
     </div>
   );
 };
