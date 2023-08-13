@@ -17,7 +17,7 @@ const ProfileHeader: FC<Props> = ({ postCount }) => {
           <div className="flex flex-row w-full h-1/2">
             <ProfileStat name={'photos'} count={postCount} />
             <ProfileStat name={'following'} count={808} />
-            <ProfileStat name={'followers'} count={809} />
+            <ProfileStat name={'followers'} count={808} />
           </div>
           <ProfileEditButton />
         </div>
