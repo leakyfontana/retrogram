@@ -3,14 +3,15 @@ import { Post } from "../helpers/types";
 
 interface Props {
   post: Post;
-  scrollToPost: (postId: string) => void;
+  scrollToPost: (postIdx: number) => void;
+  idx: number;
 }
 
-const PostGridImage: FC<Props> = ({ post, scrollToPost }) => {
+const PostGridImage: FC<Props> = ({ post, idx, scrollToPost }) => {
 
 
   return (
-    <button type="button" onClick={() => scrollToPost(post.id)} className="cursor-pointer relative block">
+    <button type="button" onClick={() => scrollToPost(idx)} className="relative block cursor-pointer">
       <figure className="m-0 drop-shadow-md p-[2px] bg-[#eeeeee]">
         <img className="w-full align-top" src={post.path} alt="" />
       </figure>
