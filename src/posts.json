@@ -1,5 +1,11 @@
 [
     {
+        "id": "25_bday",
+        "path": "assets/images/25_bday.png",
+        "location": "ARL",
+        "date_posted": 1698375495
+    },
+    {
         "id": "atlanta_black_matter",
         "path": "assets/images/atlanta_black_matter.jpg",
         "location": "ATL",
@@ -25,11 +31,41 @@
         "caption": "💥 ‘til I D-I-E 💥"
     },
     {
+        "id": "atm_camera",
+        "path": "assets/images/atm_camera.png",
+        "location": "PGH",
+        "date_posted": 1656730695
+    },
+    {
+        "id": "avocados",
+        "path": "assets/images/avocados.png",
+        "location": "AVO, Nashville",
+        "date_posted": 1656730695
+    },
+    {
+        "id": "bell_tower",
+        "path": "assets/images/bell_tower.png",
+        "location": "Netherlands Carillon",
+        "date_posted": 1675828695
+    },
+    {
         "id": "belle_isle",
         "path": "assets/images/belle_isle.jpg",
         "location": "ATL",
         "date_posted": 1569794400,
         "caption": "No football in RVA 😩🤝"
+    },
+    {
+        "id": "bham_plant",
+        "path": "assets/images/bham_plant.png",
+        "location": "Sloss Furnaces, Birmingham",
+        "date_posted": 1668283095
+    },
+    {
+        "id": "bham_statue",
+        "path": "assets/images/bham_statue.png",
+        "location": "Sloss Furnaces, Birmingham",
+        "date_posted": 1668283090
     },
     {
         "id": "blacksburg_winery",
@@ -46,11 +82,29 @@
         "caption": "Já ég veit"
     },
     {
+        "id": "bridge_fire",
+        "path": "assets/images/bridge_fire.png",
+        "location": "Washington D.C.",
+        "date_posted": 1686178695
+    },
+    {
         "id": "brooklyn_ferry",
         "path": "assets/images/brooklyn_ferry.jpg",
         "location": "DUMBO, Brooklyn",
         "date_posted": 1564610400,
         "caption": "cold showers"
+    },
+    {
+        "id": "brooklyn_view",
+        "path": "assets/images/brooklyn_view.png",
+        "location": "Marsha P Johnson Park, Brooklyn",
+        "date_posted": 1692475095
+    },
+    {
+        "id": "cactus_pyramid",
+        "path": "assets/images/cactus_pyramid.png",
+        "location": "Teotihuacán, MX",
+        "date_posted": 1668887895
     },
     {
         "id": "canadian_tuxedo",
@@ -66,6 +120,12 @@
         "caption": "silence in movement"
     },
     {
+        "id": "central_pond",
+        "path": "assets/images/central_pond.png",
+        "location": "Central Park, New York",
+        "date_posted": 1655067495
+    },
+    {
         "id": "chicago_bean",
         "path": "assets/images/chicago_bean.jpg",
         "location": "The University of Chicago",
@@ -73,10 +133,46 @@
         "caption": "Where fun goes to live 🗣"
     },
     {
+        "id": "christmas_hot_tub",
+        "path": "assets/images/christmas_hot_tub.JPEG",
+        "location": "Palm Harbor, FL",
+        "date_posted": 1672012695
+    },
+    {
         "id": "clemente",
         "path": "assets/images/clemente.jpg",
         "location": "PGH",
         "date_posted": 1625673600
+    },
+    {
+        "id": "dali_ai",
+        "path": "assets/images/dali_ai.JPG",
+        "location": "Salvador Dali Museum",
+        "date_posted": 1672351095
+    },
+    {
+        "id": "dali_nude",
+        "path": "assets/images/dali_nude.png",
+        "location": "Salvador Dali Museum",
+        "date_posted": 1672351100
+    },
+    {
+        "id": "dmx_halloween_1",
+        "path": "assets/images/dmx_halloween_1.png",
+        "location": "New York City",
+        "date_posted": 1635555495
+    },
+    {
+        "id": "dmx_halloween_2",
+        "path": "assets/images/dmx_halloween_2.JPG",
+        "location": "New York City",
+        "date_posted": 1635555495
+    },
+    {
+        "id": "dots",
+        "path": "assets/images/dots.png",
+        "location": "PGH",
+        "date_posted": 1649613495
     },
     {
         "id": "ensenada_cross",
@@ -98,11 +194,41 @@
         "caption": "Grind all winter, 🖕up the summer"
     },
     {
+        "id": "escondido_beach",
+        "path": "assets/images/escondido_beach.png",
+        "location": "Puerto Escondido, MX",
+        "date_posted": 1668549495
+    },
+    {
+        "id": "escondido_turtles",
+        "path": "assets/images/escondido_turtles.png",
+        "location": "Puerto Escondido, MX",
+        "date_posted": 1668599895
+    },
+    {
+        "id": "erik_davon_xander_central_park",
+        "path": "assets/images/erik_davon_xander_central_park.png",
+        "location": "Central Park, New York",
+        "date_posted": 1692475095
+    },
+    {
+        "id": "familiares",
+        "path": "assets/images/familiares.png",
+        "location": "CDMX",
+        "date_posted": 1668880695
+    },
+    {
         "id": "fitted",
         "path": "assets/images/fitted.jpg",
         "location": "The American Dream School",
         "date_posted": 1625673600,
         "caption": "time waits for no man - from the midst of a transitory period"
+    },
+    {
+        "id": "florida_palm",
+        "path": "assets/images/florida_palm.png",
+        "location": "Palm Harbor, FL",
+        "date_posted": 1672253895
     },
     {
         "id": "friends_tech_football",
@@ -112,10 +238,88 @@
         "caption": "🤝🦃🖕🤴"
     },
     {
-        "id": "iceland_church",
-        "path": "assets/images/iceland_church.jpg",
+        "id": "grammy_glasses",
+        "path": "assets/images/grammy_glasses.png",
+        "location": "Clearwater, FL",
+        "date_posted": 1684349895
+    },
+    {
+        "id": "groundhog_day",
+        "path": "assets/images/groundhog_day.png",
+        "location": "Punxsutawney, Pennsylvania",
+        "date_posted": 1675310295
+    },
+    {
+        "id": "groundhog_shadow",
+        "path": "assets/images/groundhog_shadow.png",
+        "location": "Punxsutawney, Pennsylvania",
+        "date_posted": 1675310296
+    },
+    {
+        "id": "hawaii_canyon",
+        "path": "assets/images/hawaii_canyon.png",
+        "location": "Kauai",
+        "date_posted": 1691168295
+    },
+    {
+        "id": "hawaii_cliff",
+        "path": "assets/images/hawaii_cliff.png",
+        "location": "Kauai",
+        "date_posted": 1690621095
+    },
+    {
+        "id": "hawaii_dance",
+        "path": "assets/images/hawaii_dance.jpg",
+        "location": "Kauai",
+        "date_posted": 1690487895
+    },
+    {
+        "id": "hawaii_falls",
+        "path": "assets/images/hawaii_falls.png",
+        "location": "Kauai",
+        "date_posted": 1690649895
+    },
+    {
+        "id": "hawaii_pond",
+        "path": "assets/images/hawaii_pond.png",
+        "location": "Kauai",
+        "date_posted": 1690635495
+    },
+    {
+        "id": "hawaii_sunset",
+        "path": "assets/images/hawaii_sunset.png",
+        "location": "Kauai",
+        "date_posted": 1690502295
+    },
+    {
+        "id": "hirshhorn",
+        "path": "assets/images/hirshhorn.png",
+        "location": "Hirshhorn Museum",
+        "date_posted": 1641153495
+    },
+    {
+        "id": "iceland_aurora",
+        "path": "assets/images/iceland_aurora.png",
         "location": "Reykjavík, Iceland",
-        "date_posted": 1564610400
+        "date_posted": 1663203495
+    },
+    {
+        "id": "iceland_aurora_2",
+        "path": "assets/images/iceland_aurora_2.png",
+        "location": "Reykjavík, Iceland",
+        "date_posted": 1663203495
+    },
+    {
+        "id": "iceland_bmw",
+        "path": "assets/images/iceland_bmw.png",
+        "location": "Grindavík, Iceland",
+        "date_posted": 1663376295
+    },
+    {
+        "id": "iceland_church",
+        "path": "assets/images/iceland_church.png",
+        "location": "Reykjavík, Iceland",
+        "date_posted": 1663549095
     },
     {
         "id": "iceland_mountain",
@@ -136,10 +340,52 @@
         "date_posted": 1564610400
     },
     {
+        "id": "iceland_sunset",
+        "path": "assets/images/iceland_sunset.png",
+        "location": "Perlan, Iceland",
+        "date_posted": 	1663203495
+    },
+    {
+        "id": "iceland_surfing",
+        "path": "assets/images/iceland_surfing.JPG",
+        "location": "Grindavik, Iceland",
+        "date_posted": 1670374695
+    },
+    {
         "id": "iceland_waterfall",
         "path": "assets/images/iceland_waterfall.jpg",
         "location": "Selfoss, Iceland",
         "date_posted": 1564610400
+    },
+    {
+        "id": "insomnia",
+        "path": "assets/images/insomnia.png",
+        "location": "Philadelphia, Pennsylvania",
+        "date_posted": 1675475895
+    },
+    {
+        "id": "junior_h_ceiling",
+        "path": "assets/images/junior_h_ceiling.png",
+        "location": "United Palace, NYC",
+        "date_posted": 1674179895
+    },
+    {
+        "id": "junior_h_wall",
+        "path": "assets/images/junior_h_wall.png",
+        "location": "United Palace, NYC",
+        "date_posted": 1674176295
+    },
+    {
+        "id": "knapsack",
+        "path": "assets/images/knapsack.png",
+        "location": "Harlem, NYC",
+        "date_posted": 1674190695
+    },
+    {
+        "id": "lake_anna",
+        "path": "assets/images/lake_anna.jpg",
+        "location": "Lake Anna",
+        "date_posted": 1605546000
     },
     {
         "id": "lake_anna_fit",
@@ -161,16 +407,46 @@
         "date_posted": 1605546000
     },
     {
-        "id": "lake_anna",
-        "path": "assets/images/lake_anna.jpg",
+        "id": "lake_anna_slides",
+        "path": "assets/images/lake_anna_slides.png",
         "location": "Lake Anna",
-        "date_posted": 1605546000
+        "date_posted": 1684619895
+    },
+    {
+        "id": "lasers",
+        "path": "assets/images/lasers.png",
+        "location": "PGH",
+        "date_posted": 1643421495
+    },
+    {
+        "id": "leather",
+        "path": "assets/images/leather.JPG",
+        "location": "Capital One Arena",
+        "date_posted": 1701395895
+    },
+    {
+        "id": "livingroom",
+        "path": "assets/images/livingroom.png",
+        "location": "Pittsburgh, Pennsylvania",
+        "date_posted": 1643421495
     },
     {
         "id": "mattress_factory",
         "path": "assets/images/mattress_factory.jpg",
         "location": "Mattress Factory",
         "date_posted": 1653753600
+    },
+    {
+        "id": "me_and_mom_hawaii",
+        "path": "assets/images/me_and_mom_hawaii.JPEG",
+        "location": "Princeville, Kauai",
+        "date_posted": 1690487895
+    },
+    {
+        "id": "mexico_car",
+        "path": "assets/images/mexico_car.png",
+        "location": "Ensenada, Mexico",
+        "date_posted": 1653173895
     },
     {
         "id": "miami",
@@ -190,6 +466,12 @@
         "path": "assets/images/millenium_park_2.jpg",
         "location": "Millennium Park",
         "date_posted": 1570572000
+    },
+    {
+        "id": "mirror.png",
+        "path": "assets/images/mirror.png",
+        "location": "ARL",
+        "date_posted": 1664855895
     },
     {
         "id": "montana_family",
@@ -241,10 +523,40 @@
         "date_posted": 1601049600
     },
     {
+        "id": "mountain_stick",
+        "path": "assets/images/mountain_stick.png",
+        "location": "Calabasas, California",
+        "date_posted": 1601049600
+    },
+    {
         "id": "myrtle_formals",
         "path": "assets/images/myrtle_formals.jpg",
         "location": "Señor Frog's",
         "date_posted": 1625673600
+    },
+    {
+        "id": "nats_plate",
+        "path": "assets/images/nats_plate.png",
+        "location": "Nats Park",
+        "date_posted": 1680656295
+    },
+    {
+        "id": "nh_barn",
+        "path": "assets/images/nh_barn.jpg",
+        "location": "16 lovejoy ln",
+        "date_posted": 1594656000
+    },
+    {
+        "id": "nh_hurricane",
+        "path": "assets/images/nh_hurricane.png",
+        "location": "Laconia, NH",
+        "date_posted": 1694822295
+    },
+    {
+        "id": "nye_2024",
+        "path": "assets/images/nye_2024.JPEG",
+        "location": "Old Town Alexandria",
+        "date_posted": 	1704085095
     },
     {
         "id": "nash_dusse",
@@ -253,10 +565,40 @@
         "date_posted": 1617832800
     },
     {
-        "id": "nh_barn",
-        "path": "assets/images/nh_barn.jpg",
-        "location": "16 lovejoy ln",
-        "date_posted": 1594656000
+        "id": "nyc_dog",
+        "path": "assets/images/nyc_dog.png",
+        "location": "Hell's Kitchen, NYC",
+        "date_posted": 1654966695
+    },
+    {
+        "id": "nyc_waterfront",
+        "path": "assets/images/nyc_waterfront.png",
+        "location": "Water Street, NYC",
+        "date_posted": 1654898295
+    },
+    {
+        "id": "ochoa",
+        "path": "assets/images/ochoa.JPG",
+        "location": "CDMX",
+        "date_posted": 1669179495
+    },
+    {
+        "id": "ohiopyle_1",
+        "path": "assets/images/ohiopyle_1.png",
+        "location": "Ohiopyle, Pennsylvania",
+        "date_posted": 1656266295
+    },
+    {
+        "id": "ohiopyle_2",
+        "path": "assets/images/ohiopyle_2.png",
+        "location": "Ohiopyle, Pennsylvania",
+        "date_posted": 1681588800
+    },
+    {
+        "id": "olaf",
+        "path": "assets/images/olaf.png",
+        "location": "Cinema + Drafthouse",
+        "date_posted": 1703988000
     },
     {
         "id": "on_camel",
@@ -266,10 +608,76 @@
         "caption": "Let it be known, I will be purchasing a camel sometime in the near future"
     },
     {
+        "id": "panna_1",
+        "path": "assets/images/panna_1.png",
+        "location": "Ensenada, Mexico",
+        "date_posted": 1653177495
+    },
+    {
+        "id": "panna_2",
+        "path": "assets/images/panna_2.png",
+        "location": "Philadelphia, Pennsylvania",
+        "date_posted": 1668297600
+    },
+    {
         "id": "parthenon",
         "path": "assets/images/parthenon.jpg",
         "location": "Nashville Parthenon",
         "date_posted": 1617832800
+    },
+    {
+        "id": "peso_pluma",
+        "path": "assets/images/peso_pluma.png",
+        "location": "Jiffy Lube Live",
+        "date_posted": 1693015095
+    },
+    {
+        "id": "peso_icelandic",
+        "path": "assets/images/peso_icelandic.png",
+        "location": "12 after 12, DC",
+        "date_posted": 1685761200
+    },
+    {
+        "id": "petes_pipe_up",
+        "path": "assets/images/petes_pipe_up.JPG",
+        "location": "Federal Hill, Baltimore",
+        "date_posted": 1696651095
+    },
+    {
+        "id": "pitt_building",
+        "path": "assets/images/pitt_building.png",
+        "location": "Pittsburgh, Pennsylvania",
+        "date_posted": 1623956295
+    },
+    {
+        "id": "pitt_clock",
+        "path": "assets/images/pitt_clock.png",
+        "location": "Pittsburgh, Pennsylvania",
+        "date_posted": 1656450000
+    },
+    {
+        "id": "pitt_train",
+        "path": "assets/images/pitt_train.png",
+        "location": "PGH",
+        "date_posted": 1656118695
+    },
+    {
+        "id": "point_loma",
+        "path": "assets/images/point_loma.png",
+        "location": "Point Loma, San Diego",
+        "date_posted": 1680552000
+    },
+    {
+        "id": "pyramid_animals",
+        "path": "assets/images/pyramid_animals.png",
+        "location": "Teotihuacán, MX",
+        "date_posted": 1668888000
+    },
+    {
+        "id": "pyramid_selfie",
+        "path": "assets/images/pyramid_selfie.png",
+        "location": "Teotihuacán, MX",
+        "date_posted": 1668891600
     },
     {
         "id": "rva_street_art",
@@ -290,6 +698,12 @@
         "date_posted": 1653753600
     },
     {
+        "id": "san_diego_park",
+        "path": "assets/images/san_diego_park.png",
+        "location": "Embarcadero Park",
+        "date_posted": 1680901200
+    },
+    {
         "id": "sasha_coogi_1",
         "path": "assets/images/sasha_coogi_1.jpg",
         "location": "THE6",
@@ -301,6 +715,12 @@
         "path": "assets/images/sasha_coogi_2.jpg",
         "location": "THE6",
         "date_posted": 1584288000
+    },
+    {
+        "id": "sd_cowboy",
+        "path": "assets/images/sd_cowboy.png",
+        "location": "Downtown San Diego",
+        "date_posted": 1689886800
     },
     {
         "id": "shoe_art",
@@ -343,6 +763,36 @@
         "caption": "Been working on this for a while. Enjoy ☄️🦧🔆 • 1. A Clockwork Orange 2. Barry Lyndon 3. The Shining 4. Eyes Wide Shut 5. Full Metal Jacket 6. Dr. Strangelove 7. 2001: A Space Odyssey 8. Paths of Glory 9. Lolita 10. Spartacus"
     },
     {
+        "id": "sunrise",
+        "path": "assets/images/sunrise.png",
+        "location": "McAfee's Knob, Virginia",
+        "date_posted": 1665831600
+    },
+    {
+        "id": "superbloom",
+        "path": "assets/images/superbloom.png",
+        "location": "Balboa Park",
+        "date_posted": 1681160295
+    },
+    {
+        "id": "tabis",
+        "path": "assets/images/tabis.png",
+        "location": "ARL",
+        "date_posted": 1702047600
+    },
+    {
+        "id": "tropicana_roof",
+        "path": "assets/images/tropicana_roof.png",
+        "location": "Tropicana Field",
+        "date_posted": 1693918800
+    },
+    {
+        "id": "tulsa_shoes",
+        "path": "assets/images/tulsa_shoes.png",
+        "location": "The Gathering Place, Tulsa",
+        "date_posted": 1681160295
+    },
+    {
         "id": "veos",
         "path": "assets/images/veos.jpg",
         "location": "ATL",
@@ -360,6 +810,18 @@
         "location": "Gentlemen’s Factory",
         "date_posted": 1575565200,
         "caption": "a case of the mean reds"
+    },
+    {
+        "id": "vt_heinz",
+        "path": "assets/images/vt_heinz.png",
+        "location": "Heinz Field",
+        "date_posted": 1665269895
+    },
+    {
+        "id": "waffle_house",
+        "path": "assets/images/waffle_house.png",
+        "location": "South",
+        "date_posted": 1667628000
     },
     {
         "id": "wharf_tyler_bday",
@@ -385,6 +847,13 @@
         "path": "assets/images/ww1_memorial_3.jpg",
         "location": "Washington D.C.",
         "date_posted": 1584633600
+    },
+    {
+        "id": "xolos",
+        "path": "assets/images/xolos.png",
+        "location": "Estadio Caliente, Tijuana",
+        "date_posted": 1579280400,
+        "caption": "Never not hot"
     },
     {
         "id": "yorkville",
