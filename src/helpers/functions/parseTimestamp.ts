@@ -19,7 +19,7 @@ const parseTimestamp = (timestamp: number): string => {
     }
 
     if (diff < 31536000) {
-        return `${Math.floor(diff / 2630000)}m`
+        return `${Math.floor(diff / 2630000)}mo`
     }
 
     return `${Math.floor(diff / 31536000)}y`;
