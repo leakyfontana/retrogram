@@ -4,6 +4,8 @@ micronaut:
   server:
     cors:
         enabled: true
+    multipart:
+      max-file-size: 100MB
   object-storage:
     gcp:
       default:

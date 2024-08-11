@@ -23,29 +23,29 @@ import io.micronaut.objectstorage.response.UploadResponse;
 import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.scheduling.TaskExecutors;
 
-@Controller(ProfilePicturesController.PREFIX) 
-@ExecuteOn(TaskExecutors.BLOCKING) 
-public class ProfilePicturesController implements ImageApi {
+@Controller(ImageController.PREFIX)
+@ExecuteOn(TaskExecutors.BLOCKING)
+public class ImageController implements ImageApi {
 
     static final String PREFIX = "/images";
 
-    private final GoogleCloudStorageOperations objectStorage; 
-    private final HttpHostResolver httpHostResolver; 
+    private final GoogleCloudStorageOperations objectStorage;
+    private final HttpHostResolver httpHostResolver;
 
-    public ProfilePicturesController(GoogleCloudStorageOperations objectStorage, HttpHostResolver httpHostResolver) {
+    public ImageController(GoogleCloudStorageOperations objectStorage, HttpHostResolver httpHostResolver) {
         this.objectStorage = objectStorage;
         this.httpHostResolver = httpHostResolver;
     }
 
     @Override
     public HttpResponse<?> upload(CompletedFileUpload fileUpload, String imageId, HttpRequest<?> request) {
-        String key = buildKey(imageId); 
-        UploadRequest objectStorageUpload = UploadRequest.fromCompletedFileUpload(fileUpload, key); 
-        UploadResponse<Blob> response = objectStorage.upload(objectStorageUpload);  
+        String key = buildKey(imageId);
+        UploadRequest objectStorageUpload = UploadRequest.fromCompletedFileUpload(fileUpload, key);
+        UploadResponse<Blob> response = objectStorage.upload(objectStorageUpload);
 
         return HttpResponse
-                .created(location(request, imageId)) 
-                .header(HttpHeaders.ETAG, response.getETag()); 
+                .created(location(request, imageId))
+                .header(HttpHeaders.ETAG, response.getETag());
     }
 
     private static String buildKey(String imageId) {
@@ -59,26 +59,26 @@ public class ProfilePicturesController implements ImageApi {
                 .build();
     }
 
-@Override
-public Optional<HttpResponse<StreamedFile>> download(String imageId) {
-    String key = buildKey(imageId);
-    return objectStorage.retrieve(key) 
-            .map(ProfilePicturesController::buildStreamedFile); 
-}
+    @Override
+    public Optional<HttpResponse<StreamedFile>> download(String imageId) {
+        String key = buildKey(imageId);
+        return objectStorage.retrieve(key)
+                .map(ImageController::buildStreamedFile);
+    }
 
-private static HttpResponse<StreamedFile> buildStreamedFile(GoogleCloudStorageEntry entry) {
-    Blob nativeEntry = entry.getNativeEntry();
-    MediaType mediaType = MediaType.of(nativeEntry.getContentType());
-    StreamedFile file = new StreamedFile(entry.getInputStream(), mediaType).attach(entry.getKey());
-    MutableHttpResponse<Object> httpResponse = HttpResponse.ok()
-            .header(HttpHeaders.ETAG, nativeEntry.getEtag()); 
-    file.process(httpResponse);
-    return httpResponse.body(file);
-}
+    private static HttpResponse<StreamedFile> buildStreamedFile(GoogleCloudStorageEntry entry) {
+        Blob nativeEntry = entry.getNativeEntry();
+        MediaType mediaType = MediaType.of(nativeEntry.getContentType());
+        StreamedFile file = new StreamedFile(entry.getInputStream(), mediaType).attach(entry.getKey());
+        MutableHttpResponse<Object> httpResponse = HttpResponse.ok()
+                .header(HttpHeaders.ETAG, nativeEntry.getEtag());
+        file.process(httpResponse);
+        return httpResponse.body(file);
+    }
 
-@Override
-public void delete(String imageId) {
-    String key = buildKey(imageId);
-    objectStorage.delete(key);
-}
+    @Override
+    public void delete(String imageId) {
+        String key = buildKey(imageId);
+        objectStorage.delete(key);
+    }
 }
