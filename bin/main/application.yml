@@ -1,0 +1,10 @@
+micronaut:
+  application:
+    name: retrogram-service
+  server:
+    cors:
+        enabled: true
+  object-storage:
+    gcp:
+      default:
+        bucket: retrogram_photos

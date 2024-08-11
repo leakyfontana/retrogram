@@ -19,3 +19,23 @@
 - [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
 
 
+I see the issue! Steps 5 and 6 should not be in code format since they are instructions, not commands. Here’s the corrected Markdown snippet:
+
+# Google Cloud Authentication Guide
+
+Follow these steps to authenticate with Google Cloud.
+
+## Authentication Steps
+
+1. Run the following command in the terminal:
+   ```bash
+   gcloud auth login
+   ```
+2. Authenticate in the browser.
+3. Enter the authentication code in the terminal.
+4. Run the following command in the terminal:
+   ```bash
+   gcloud auth application-default login
+   ```
+5. Authenticate in the browser.
+6. Enter the authentication code in the terminal.

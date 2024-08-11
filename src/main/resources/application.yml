@@ -1,0 +1,12 @@
+micronaut:
+  application:
+    name: retrogram-service
+  server:
+    cors:
+        enabled: true
+    multipart:
+      max-file-size: 100MB
+  object-storage:
+    gcp:
+      default:
+        bucket: retrogram_photos
