@@ -14,11 +14,21 @@ repositories {
 dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.data:micronaut-data-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.objectstorage:micronaut-object-storage-gcp")
+    implementation("com.google.cloud.sql:postgres-socket-factory:1.11.0")
+    implementation("io.micronaut.flyway:micronaut-flyway:6.3.0")
+    implementation("org.flywaydb:flyway-database-postgresql:10.3.0") 
+    implementation("org.postgresql:postgresql:42.7.3")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
+    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.yaml:snakeyaml")
+    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql:42.7.3")  
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
@@ -34,6 +44,7 @@ java {
 
 graalvmNative.toolchainDetection = false
 micronaut {
+    version = micronautVersion
     runtime("netty")
     testRuntime("junit5")
     processing {
@@ -52,6 +63,5 @@ micronaut {
         optimizeNetty = true
     }
 }
-
 
 

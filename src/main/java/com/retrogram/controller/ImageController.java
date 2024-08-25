@@ -1,17 +1,20 @@
-package com.retrogram.controllers;
+package com.retrogram.controller;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import com.google.cloud.storage.Blob;
+import com.retrogram.entity.Image;
 import com.retrogram.interfaces.ImageApi;
+import com.retrogram.repository.ImageRepository;
+import com.retrogram.util.ImageHelper;
 
 import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.MediaType;
-import io.micronaut.http.MutableHttpResponse;
 import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Part;
 import io.micronaut.http.multipart.CompletedFileUpload;
 import io.micronaut.http.server.types.files.StreamedFile;
 import io.micronaut.http.server.util.HttpHostResolver;
@@ -31,54 +34,57 @@ public class ImageController implements ImageApi {
 
     private final GoogleCloudStorageOperations objectStorage;
     private final HttpHostResolver httpHostResolver;
+    private final ImageRepository imageRepository;
 
-    public ImageController(GoogleCloudStorageOperations objectStorage, HttpHostResolver httpHostResolver) {
+    public ImageController(GoogleCloudStorageOperations objectStorage, HttpHostResolver httpHostResolver,
+            ImageRepository imageRepository) {
         this.objectStorage = objectStorage;
         this.httpHostResolver = httpHostResolver;
+        this.imageRepository = imageRepository;
     }
 
     @Override
-    public HttpResponse<?> upload(CompletedFileUpload fileUpload, String imageId, HttpRequest<?> request) {
-        String key = buildKey(imageId);
+    public HttpResponse<?> upload(@Part("imageName") String imageName,
+            @Part("location") String location,
+            @Part("uploadedAt") LocalDateTime uploadedAt,
+            @Part("fileUpload") CompletedFileUpload fileUpload,
+            HttpRequest<?> request) {
+        String mediaType = fileUpload.getContentType().orElse(null).toString();
+        String key = ImageHelper.buildKey(imageName, mediaType);
+
+        // Upload image to object storage
         UploadRequest objectStorageUpload = UploadRequest.fromCompletedFileUpload(fileUpload, key);
         UploadResponse<Blob> response = objectStorage.upload(objectStorageUpload);
 
+        // Save to database
+        Image image = new Image(key, imageName, mediaType, uploadedAt,
+                location);
+        imageRepository.save(image);
+
         return HttpResponse
-                .created(location(request, imageId))
+                .created(location(request, key))
                 .header(HttpHeaders.ETAG, response.getETag());
     }
 
-    private static String buildKey(String imageId) {
-        return imageId + ".jpg";
-    }
-
-    private URI location(HttpRequest<?> request, String imageId) {
+    private URI location(HttpRequest<?> request, String imageKey) {
         return UriBuilder.of(httpHostResolver.resolve(request))
                 .path(PREFIX)
-                .path(imageId)
+                .path(imageKey)
                 .build();
     }
 
     @Override
-    public Optional<HttpResponse<StreamedFile>> download(String imageId) {
-        String key = buildKey(imageId);
-        return objectStorage.retrieve(key)
+    public Optional<HttpResponse<StreamedFile>> download(String imageKey) {
+        return objectStorage.retrieve(imageKey)
                 .map(ImageController::buildStreamedFile);
     }
 
     private static HttpResponse<StreamedFile> buildStreamedFile(GoogleCloudStorageEntry entry) {
-        Blob nativeEntry = entry.getNativeEntry();
-        MediaType mediaType = MediaType.of(nativeEntry.getContentType());
-        StreamedFile file = new StreamedFile(entry.getInputStream(), mediaType).attach(entry.getKey());
-        MutableHttpResponse<Object> httpResponse = HttpResponse.ok()
-                .header(HttpHeaders.ETAG, nativeEntry.getEtag());
-        file.process(httpResponse);
-        return httpResponse.body(file);
+        return ImageHelper.buildStreamedFile(entry);
     }
 
     @Override
-    public void delete(String imageId) {
-        String key = buildKey(imageId);
-        objectStorage.delete(key);
+    public void delete(String imageKey) {
+        objectStorage.delete(imageKey);
     }
 }
