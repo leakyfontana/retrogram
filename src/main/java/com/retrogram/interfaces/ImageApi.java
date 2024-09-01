@@ -29,5 +29,5 @@ public interface ImageApi {
 
     @Status(HttpStatus.NO_CONTENT)
     @Delete("/{imageKey}")
-    void delete(String imageKey);
+    HttpStatus delete(String imageKey);
 }
