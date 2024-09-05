@@ -13,7 +13,7 @@ micronaut:
 
 datasources:
   default:
-    url: jdbc:postgresql://google/${DB_NAME}?cloudSqlInstance=${CLOUD_SQL_INSTANCE}&socketFactory=com.google.cloud.sql.postgres.SocketFactory
+    url: ${DB_URL}
     driverClassName: org.postgresql.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
