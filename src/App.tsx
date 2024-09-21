@@ -5,8 +5,9 @@ import PostGrid from "./components/PostGrid";
 import ProfileHeader from "./components/ProfileHeader";
 import NavButtonEnum from "./helpers/enums/NavButtonEnum";
 import PostList from "./components/PostList";
-import posts from "./posts.json";
+import getAllImages from "./services/getAllImages";
 import React from "react";
+import { Image } from "./helpers/types";
 import { FixedSizeList } from "react-window";
 
 function App() {
@@ -14,6 +15,20 @@ function App() {
     NavButtonEnum.Grid
   );
   const [listScrollIdx, setListScrollIdx] = useState<number | null>(null);
+  const [images, setImages] = useState<Array<Image>>([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const data = await getAllImages();
+        setImages(data);
+      } catch (error) {
+        console.error("Error loading images:", error);
+      }
+    };
+    
+    fetchImages();
+  }, []);
 
   const listRef: React.LegacyRef<FixedSizeList<any>> | undefined = React.createRef();
 
@@ -29,8 +44,10 @@ function App() {
     }
   }, [listRef, listScrollIdx]);
 
-  const sortedPosts = posts.sort((x, y) => {
-    return y.date_posted - x.date_posted;
+  const sortedPosts = images.sort((x, y) => {
+    const parsedXDate = new Date(x.uploadedAt)
+    const parsedYDate = new Date(y.uploadedAt)
+    return parsedYDate.getTime() - parsedXDate.getTime()
   });
 
   return (
@@ -43,7 +60,7 @@ function App() {
         id="post-list"
       >
         {selectedButton === NavButtonEnum.Grid && (
-          <ProfileHeader postCount={posts.length} />
+          <ProfileHeader postCount={images.length} />
         )}
         <NavBar
           selectedButton={selectedButton}
