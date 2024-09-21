@@ -1,7 +1,6 @@
 package com.retrogram.interfaces;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
@@ -13,7 +12,6 @@ import io.micronaut.http.annotation.Part;
 import io.micronaut.http.annotation.Post;
 import io.micronaut.http.annotation.Status;
 import io.micronaut.http.multipart.CompletedFileUpload;
-import io.micronaut.http.server.types.files.StreamedFile;
 
 public interface ImageApi {
 
@@ -24,10 +22,10 @@ public interface ImageApi {
             @Part("fileUpload") CompletedFileUpload fileUpload,
             HttpRequest<?> request);
 
-    @Get("/{imageKey}")
-    Optional<HttpResponse<StreamedFile>> download(String imageKey);
+    @Get(value = "/{imageId}")
+    HttpResponse getById(Long imageId);
 
     @Status(HttpStatus.NO_CONTENT)
-    @Delete("/{imageKey}")
-    HttpStatus delete(String imageKey);
+    @Delete("/{imageId}")
+    HttpStatus delete(Long imageId);
 }

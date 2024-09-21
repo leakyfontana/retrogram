@@ -3,12 +3,14 @@ package com.retrogram.entity;
 import io.micronaut.data.annotation.GeneratedValue;
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
+import io.micronaut.serde.annotation.Serdeable;
 import jakarta.validation.constraints.NotNull;
 
 import static io.micronaut.data.annotation.GeneratedValue.Type.AUTO;
 
 import java.time.LocalDateTime;
 
+@Serdeable
 @MappedEntity
 public class Image {
     @Id
@@ -16,10 +18,10 @@ public class Image {
     private Long id;
 
     @NotNull
-    private String file_path;
+    private String file_name;
 
     @NotNull
-    private String file_name;
+    private byte[] image_data;
 
     private String media_type;
 
@@ -28,10 +30,10 @@ public class Image {
 
     private String location;
 
-    public Image(@NotNull String filePath, @NotNull String fileName, @NotNull String mediaType,
+    public Image(@NotNull String fileName, @NotNull byte[] imageData, @NotNull String mediaType,
             @NotNull LocalDateTime uploadedAt, String location) {
-        this.file_path = filePath;
         this.file_name = fileName;
+        this.image_data = imageData;
         this.media_type = mediaType;
         this.uploaded_at = uploadedAt;
         this.location = location;
@@ -45,20 +47,20 @@ public class Image {
         this.id = id;
     }
 
-    public String getFilePath() {
-        return file_path;
-    }
-
-    public void setFilePath(String filePath) {
-        this.file_path = filePath;
-    }
-
     public String getFileName() {
         return file_name;
     }
 
     public void setFileName(String fileName) {
         this.file_name = fileName;
+    }
+
+    public byte[] getImageData() {
+        return image_data;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.image_data = imageData;
     }
 
     public String getMediaType() {
