@@ -1,9 +1,9 @@
 import { FC } from "react";
 import PostGridImage from "./PostGridImage";
-import { Post } from "../helpers/types";
+import { Image } from "../helpers/types";
 
 interface Props {
-  posts: Post[];
+  posts: Image[];
   setSelectedButton: React.Dispatch<React.SetStateAction<number>>;
   scrollToPost: (postIdx: number) => void;
 };

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import PostListImage from "./PostListImage";
-import { Post } from "../helpers/types";
+import { Image } from "../helpers/types";
 import { FixedSizeList, FixedSizeList as List } from "react-window";
 
 interface Props {
-  posts: Post[];
+  posts: Image[];
   listRef: React.LegacyRef<FixedSizeList<any>> | undefined;
 }
 
