@@ -1,16 +1,15 @@
 package com.retrogram.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import com.google.cloud.storage.Blob;
 import com.retrogram.entity.Image;
 import com.retrogram.interfaces.ImageApi;
 import com.retrogram.repository.ImageRepository;
 import com.retrogram.util.ImageHelper;
 
-import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
@@ -22,9 +21,6 @@ import io.micronaut.http.server.types.files.StreamedFile;
 import io.micronaut.http.server.util.HttpHostResolver;
 import io.micronaut.http.uri.UriBuilder;
 import io.micronaut.objectstorage.googlecloud.GoogleCloudStorageEntry;
-import io.micronaut.objectstorage.googlecloud.GoogleCloudStorageOperations;
-import io.micronaut.objectstorage.request.UploadRequest;
-import io.micronaut.objectstorage.response.UploadResponse;
 import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.scheduling.TaskExecutors;
 
@@ -39,7 +35,6 @@ public class ImageController implements ImageApi {
 
     static final String PREFIX = "/images";
 
-    private final GoogleCloudStorageOperations objectStorage;
     private final HttpHostResolver httpHostResolver;
     private final ImageRepository imageRepository;
 
@@ -50,9 +45,8 @@ public class ImageController implements ImageApi {
      * @param httpHostResolver The HTTP host resolver.
      * @param imageRepository  The repository for image data.
      */
-    public ImageController(GoogleCloudStorageOperations objectStorage, HttpHostResolver httpHostResolver,
+    public ImageController(HttpHostResolver httpHostResolver,
             ImageRepository imageRepository) {
-        this.objectStorage = objectStorage;
         this.httpHostResolver = httpHostResolver;
         this.imageRepository = imageRepository;
     }
@@ -74,20 +68,63 @@ public class ImageController implements ImageApi {
             @Part("fileUpload") CompletedFileUpload fileUpload,
             HttpRequest<?> request) {
         String mediaType = fileUpload.getContentType().orElse(null).toString();
-        String key = ImageHelper.buildKey(imageName, mediaType);
 
-        // Upload image to object storage
-        UploadRequest objectStorageUpload = UploadRequest.fromCompletedFileUpload(fileUpload, key);
-        UploadResponse<Blob> response = objectStorage.upload(objectStorageUpload);
-
-        // Save to database
-        Image image = new Image(key, imageName, mediaType, uploadedAt,
-                location);
-        imageRepository.save(image);
+        try {
+            Image image = new Image(imageName, fileUpload.getBytes(), mediaType, uploadedAt,
+                    location);
+            imageRepository.save(image);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return HttpResponse.serverError(e.getMessage());
+        }
 
         return HttpResponse
-                .created(location(request, key))
-                .header(HttpHeaders.ETAG, response.getETag());
+                .created(imageName);
+    }
+
+    /**
+     * Retrieves an image by its ID from the repository.
+     * 
+     * @param imageId The ID of the image to retrieve.
+     * @return {@link HttpResponse} containing the image if found (HTTP 200),
+     *         or an HTTP 404 Not Found response if the image is not present.
+     */
+    @Override
+    public HttpResponse<?> getById(Long imageId) {
+        Optional<Image> imageOptional = imageRepository.findById(imageId);
+
+        if (imageOptional.isPresent()) {
+            // Return the found image wrapped in an OK response
+            return HttpResponse.ok(imageOptional.get());
+        } else {
+            // Return a 404 Not Found response if the image isn't found
+            return HttpResponse.notFound();
+        }
+    }
+
+    /**
+     * Deletes an image file from the storage and its metadata from the database.
+     *
+     * @param imageKey The key of the image to delete.
+     * @return HttpStatus.NO_CONTENT if successful, HttpStatus.NOT_FOUND if the
+     *         image doesn't exist.
+     */
+    @Override
+    @Status(HttpStatus.NO_CONTENT)
+    public HttpStatus delete(Long imageId) {
+        // First, check if the image exists in the database
+        Optional<Image> imageOptional = imageRepository.findById(imageId);
+
+        if (imageOptional.isPresent()) {
+
+            // Delete from database
+            imageRepository.delete(imageOptional.get());
+
+            return HttpStatus.NO_CONTENT;
+        } else {
+            // Image not found
+            return HttpStatus.NOT_FOUND;
+        }
     }
 
     /**
@@ -105,19 +142,6 @@ public class ImageController implements ImageApi {
     }
 
     /**
-     * Downloads an image file from the storage.
-     *
-     * @param imageKey The key of the image to download.
-     * @return An Optional containing the HTTP response with the streamed file,
-     *         or empty if the file is not found.
-     */
-    @Override
-    public Optional<HttpResponse<StreamedFile>> download(String imageKey) {
-        return objectStorage.retrieve(imageKey)
-                .map(ImageController::buildStreamedFile);
-    }
-
-    /**
      * Builds a StreamedFile response from a Google Cloud Storage entry.
      *
      * @param entry The Google Cloud Storage entry.
@@ -125,33 +149,5 @@ public class ImageController implements ImageApi {
      */
     private static HttpResponse<StreamedFile> buildStreamedFile(GoogleCloudStorageEntry entry) {
         return ImageHelper.buildStreamedFile(entry);
-    }
-
-    /**
-     * Deletes an image file from the storage and its metadata from the database.
-     *
-     * @param imageKey The key of the image to delete.
-     * @return HttpStatus.NO_CONTENT if successful, HttpStatus.NOT_FOUND if the
-     *         image doesn't exist.
-     */
-    @Override
-    @Status(HttpStatus.NO_CONTENT)
-    public HttpStatus delete(String imageKey) {
-        System.out.println(imageKey);
-        // First, check if the image exists in the database
-        Optional<Image> imageOptional = imageRepository.findByFilePath(imageKey);
-
-        if (imageOptional.isPresent()) {
-            // Delete from object storage
-            objectStorage.delete(imageKey);
-
-            // Delete from database
-            imageRepository.delete(imageOptional.get());
-
-            return HttpStatus.NO_CONTENT;
-        } else {
-            // Image not found
-            return HttpStatus.NOT_FOUND;
-        }
     }
 }

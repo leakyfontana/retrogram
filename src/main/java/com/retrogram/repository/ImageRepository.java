@@ -17,8 +17,6 @@ public interface ImageRepository extends CrudRepository<Image, Long> {
     @Override
     Optional<Image> findById(Long id);
 
-    Optional<Image> findByFilePath(String filePath);
-
     List<Image> findByFileName(String fileName);
 
     List<Image> findByMediaType(String mediaType);
