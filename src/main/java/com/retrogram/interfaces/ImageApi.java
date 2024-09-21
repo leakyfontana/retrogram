@@ -22,6 +22,9 @@ public interface ImageApi {
             @Part("fileUpload") CompletedFileUpload fileUpload,
             HttpRequest<?> request);
 
+    @Get(value = "/")
+    HttpResponse getAll();
+
     @Get(value = "/{imageId}")
     HttpResponse getById(Long imageId);
 

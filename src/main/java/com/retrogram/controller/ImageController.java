@@ -3,6 +3,7 @@ package com.retrogram.controller;
 import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import com.retrogram.entity.Image;
@@ -100,6 +101,12 @@ public class ImageController implements ImageApi {
             // Return a 404 Not Found response if the image isn't found
             return HttpResponse.notFound();
         }
+    }
+
+    @Override
+    public HttpResponse<List<Image>> getAll() {
+        List<Image> images = imageRepository.findAll();
+        return HttpResponse.ok(images);
     }
 
     /**
