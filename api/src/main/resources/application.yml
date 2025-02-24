@@ -1,0 +1,33 @@
+micronaut:
+  application:
+    name: retrogram-service
+  server:
+    cors:
+        enabled: true
+    multipart:
+      max-file-size: 100MB
+
+datasources:
+  default:
+    url: ${DB_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+    entity-scan:
+      packages: 'com.retrogram.entity'
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:db/migration
+      baseline-on-migrate: true
+      baseline-version: 0

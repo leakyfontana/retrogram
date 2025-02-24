@@ -1,0 +1,80 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.micronaut.application") version "4.3.5"
+    id("io.micronaut.aot") version "4.3.5"
+}
+
+version = "0.1"
+group = "com.retrogram"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.data:micronaut-data-processor")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation("io.micronaut.objectstorage:micronaut-object-storage-gcp")
+    implementation("com.google.cloud.sql:postgres-socket-factory:1.11.0")
+    implementation("io.micronaut.flyway:micronaut-flyway:6.3.0")
+    implementation("org.flywaydb:flyway-database-postgresql:10.3.0") 
+    implementation("org.postgresql:postgresql:42.7.3")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.data:micronaut-data-jdbc")
+    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+    compileOnly("io.micronaut:micronaut-http-client")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.yaml:snakeyaml")
+    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql:42.7.3")  
+    testImplementation("io.micronaut:micronaut-http-client")
+}
+
+
+application {
+    mainClass.set("com.retrogram.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}
+
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    version = micronautVersion
+    runtime("netty")
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("com.retrogram.*")
+    }
+    aot {
+    // Please review carefully the optimizations enabled below
+    // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
+        optimizeServiceLoading = false
+        convertYamlToJava = false
+        precomputeOperations = true
+        cacheEnvironment = true
+        optimizeClassLoading = true
+        deduceEnvironment = true
+        optimizeNetty = true
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.retrogram.Application'
+        )
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes 'Main-Class': 'com.retrogram.Application'
+    }
+}
