@@ -1,0 +1,225 @@
+/* Font definitions */
+@font-face {
+  font-family: 'Billabong';
+  src: url('/public/assets/fonts/Billabong.woff2') format('woff2'),
+       url('/public/assets/fonts/Billabong.woff') format('woff'),
+       url('/public/assets/fonts/Billabong.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Main Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app-container {
+  background-color: #c9cccf;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.app-header {
+  background: linear-gradient(to bottom, #5A88AF, #214E72);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 8px 0;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 2.25rem;
+  color: white;
+  font-family: 'Billabong', cursive;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+/* Profile Header Styles */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-stats {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-count {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.edit-profile-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.profile-bio {
+  margin-bottom: 15px;
+}
+
+.profile-bio p {
+  margin: 2px 0;
+}
+
+/* Navigation Bar Styles */
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  margin-bottom: 15px;
+}
+
+.nav-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.nav-button.active {
+  border-bottom: 2px solid #214E72;
+}
+
+.nav-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Post Grid Styles */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.grid-item {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Post List Styles */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.post-item {
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-header .profile-image {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.post-image {
+  width: 100%;
+  max-height: 375px;
+  object-fit: cover;
+}
+
+.post-info {
+  padding: 10px;
+}
+
+.post-location {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.post-timestamp {
+  font-size: 12px;
+  color: #8e8e8e;
+} 
