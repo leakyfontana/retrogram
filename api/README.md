@@ -1,41 +1,117 @@
-## Micronaut 4.3.8 Documentation
+# Retrogram API
 
-- [User Guide](https://docs.micronaut.io/4.3.8/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.3.8/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.3.8/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+A Go-based image service API for the Retrogram application. This is a port of the original Micronaut Java service, now using MySQL instead of PostgreSQL.
 
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-## Feature micronaut-aot documentation
+## Features
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+- Upload images with metadata
+- Retrieve images by ID
+- List all images
+- Delete images
 
+## Technology Stack
 
-## Feature serialization-jackson documentation
+- Go 1.21+
+- Gin Web Framework
+- GORM (Go Object Relational Mapper)
+- MySQL
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
+## Project Structure
 
+```
+.
+├── cmd/                  # Application entry points
+│   └── main.go           # Main application
+├── internal/             # Private application code
+│   ├── config/           # Configuration handling
+│   │   └── mysql_config.go # MySQL configuration
+│   ├── db/               # Database utilities
+│   │   └── migration.go  # Database migrations
+│   ├── handler/          # HTTP handlers (controllers)
+│   │   └── image_handler.go  # Image API endpoints
+│   ├── models/           # Data models
+│   │   └── image.go      # Image data model
+│   ├── repository/       # Data access layer
+│   │   └── image_repository.go  # Database operations for images
+│   └── service/          # Business logic
+│       └── image_service.go  # Image business operations
+├── .env                  # Environment variables
+├── Dockerfile            # Container definition
+├── go.mod                # Go module definition
+└── README.md             # Documentation
+```
 
-I see the issue! Steps 5 and 6 should not be in code format since they are instructions, not commands. Here’s the corrected Markdown snippet:
+## Prerequisites
 
-# Google Cloud Authentication Guide
+- Go 1.21 or later
+- MySQL 5.7 or later
 
-Follow these steps to authenticate with Google Cloud.
+## Configuration
 
-## Authentication Steps
+The application uses environment variables for configuration. You can either set these in your environment or create a `.env` file in the project root.
 
-1. Run the following command in the terminal:
-   ```bash
-   gcloud auth login
+Required environment variables:
+
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_NAME=retrogram
+DB_CHARSET=utf8mb4
+DB_PARSE_TIME=True
+DB_LOC=Local
+PORT=8080
+```
+
+## Database Setup
+
+1. Create a MySQL database:
+   ```sql
+   CREATE DATABASE retrogram CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
-2. Authenticate in the browser.
-3. Enter the authentication code in the terminal.
-4. Run the following command in the terminal:
-   ```bash
-   gcloud auth application-default login
+
+2. The application will automatically create the required tables on startup through GORM's auto-migration feature.
+
+## Running Locally
+
+1. Clone the repository
+2. Set up your environment variables or create a `.env` file
+3. Install dependencies:
    ```
-5. Authenticate in the browser.
-6. Enter the authentication code in the terminal.
+   go mod download
+   ```
+4. Run the application:
+   ```
+   go run cmd/main.go
+   ```
+
+## API Endpoints
+
+- `GET /images` - Get all images
+- `GET /images/:id` - Get image by ID
+- `GET /images/:id?download=true` - Download the image file
+- `POST /images` - Upload a new image (multipart form)
+- `DELETE /images/:id` - Delete an image
+
+## Docker Support
+
+Build the Docker image:
+
+```
+docker build -t retrogram-api .
+```
+
+Run the container:
+
+```
+docker run -p 8080:8080 --env-file .env retrogram-api
+```
+
+## Differences from Micronaut Version
+
+- Uses Gin instead of Micronaut for the web framework
+- Uses GORM instead of JPA for database access
+- Simplified configuration with environment variables
+- Uses MySQL instead of PostgreSQL
+- Direct binary image storage in MySQL (no Google Cloud Storage)
